@@ -1,0 +1,78 @@
+body {
+  min-height: 100vh;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  text-align: center;
+  background-color: rgb(208, 248, 250);
+}
+
+.app {
+  margin: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app button {
+  max-width: 600px;
+  width: 100%;
+  font-size: 1.75rem;
+}
+
+#answ-tones {
+  font-size: 1.2rem;
+  color: gray;
+}
+
+.boxes {
+  display: flex;
+  gap: 1rem;
+  margin: 1.5rem;
+}
+
+label {
+  font-weight: bold;
+}
+
+.btnz {
+  display: flex;
+  gap: 1rem;
+}
+
+.app p {
+  font-weight: bold;
+  font-size: 1.75rem;
+  color: black;
+  margin-bottom: 0rem;
+}
+
+.logo {
+  display: flex;
+}
+.logo img {
+  max-width: 100px;
+}
+
+.logo span {
+  font-family: monospace;
+  color: black;
+  position: relative;
+  left: -45px;
+  font-size: 70px;
+}
+
+.flash {
+  display: none;
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background-color: rgb(146, 246, 191);
+  padding: 1rem;
+  border-radius: 0.4rem;
+  font-weight: bold;
+  color: rgb(87, 87, 87);
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>👂🏋️♫🎹</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/picocss/1.5.3/pico.min.css"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"
+      integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+      defer
+    ></script>
+    <script src="./js/script.js" defer type="module"></script>
+  </head>
+
+  <body>
+    <div class="logo">
+      <img src="./assets/ear.png" alt="" />
+      <span>CAN</span>
+    </div>
+
+    <div class="app">
+      <div class="boxes">
+        <label for="piano">
+          <input type="checkbox" id="piano" name="piano" /> Piano
+        </label>
+        <label for="bassoon">
+          <input type="checkbox" id="bassoon" name="bassoon" />
+          Bassoon
+        </label>
+      </div>
+
+      <button id="quesBtn">make question</button>
+
+      <div class="btnz">
+        <button id="harmBtn">harmonic</button>
+        <button id="seqBtn">melodic</button>
+      </div>
+
+      <button id="answBtn">show answer</button>
+      <p id="answ"></p>
+      <span id="answ-tones"></span>
+    </div>
+    <div class="flash">New question created</div>
+  </body>
+</html>
