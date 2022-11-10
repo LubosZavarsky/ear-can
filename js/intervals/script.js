@@ -1,17 +1,17 @@
-import { data, piano, bassoon } from './data.js';
-import getInterval from './getInterval.js';
+import { data, piano, bassoon } from "../data.js";
+import getInterval from "./getInterval.js";
 
-const answTones = document.querySelector('#answ-tones');
-const answ = document.querySelector('#answ');
-const btns = document.querySelectorAll('button');
-const quesBtn = document.querySelector('#quesBtn');
-const harmBtn = document.querySelector('#harmBtn');
-const seqBtn = document.querySelector('#seqBtn');
-const answBtn = document.querySelector('#answBtn');
-const flashMsg = document.querySelector('.flash');
+const answTones = document.querySelector("#answ-tones");
+const answ = document.querySelector("#answ");
+const btns = document.querySelectorAll("button");
+const quesBtn = document.querySelector("#quesBtn");
+const harmBtn = document.querySelector("#harmBtn");
+const seqBtn = document.querySelector("#seqBtn");
+const answBtn = document.querySelector("#answBtn");
+const flashMsg = document.querySelector(".flash");
 const checkBoxes = document.querySelectorAll('input[type="checkbox"]');
-const pianoBox = document.querySelector('#piano');
-const bassoonBox = document.querySelector('#bassoon');
+const pianoBox = document.querySelector("#piano");
+const bassoonBox = document.querySelector("#bassoon");
 
 let question = {
   tones: [{}],
@@ -25,13 +25,13 @@ btns.forEach((b) => (b.disabled = true));
 
 // DISABLE BTN IF NO CHECKBOX CHECKED
 checkBoxes.forEach((c) =>
-  c.addEventListener('change', () => {
+  c.addEventListener("change", () => {
     if (
       document.querySelectorAll('input[type="checkbox"]:checked').length === 0
     ) {
       btns.forEach((b) => (b.disabled = true));
-      answ.innerText = '';
-      answTones.innerText = '';
+      answ.innerText = "";
+      answTones.innerText = "";
     } else {
       quesBtn.disabled = false;
     }
@@ -39,16 +39,16 @@ checkBoxes.forEach((c) =>
 );
 
 // EVENT LISTENERS
-quesBtn.addEventListener('click', makeQuestion);
-quesBtn.addEventListener('touchstart', makeQuestion);
+quesBtn.addEventListener("click", makeQuestion);
+quesBtn.addEventListener("touchstart", makeQuestion);
 
-harmBtn.addEventListener('click', playHarmonic);
-harmBtn.addEventListener('touchstart', playHarmonic);
+harmBtn.addEventListener("click", playHarmonic);
+harmBtn.addEventListener("touchstart", playHarmonic);
 
-seqBtn.addEventListener('click', playMelodic);
-seqBtn.addEventListener('touchstart', playMelodic);
+seqBtn.addEventListener("click", playMelodic);
+seqBtn.addEventListener("touchstart", playMelodic);
 
-answBtn.addEventListener('click', () => {
+answBtn.addEventListener("click", () => {
   const answer = getInterval(question.tones[0].id, question.tones[1].id);
   answ.innerText = answer;
   answTones.innerText = `${question.tones[0].name}, ${question.tones[1].name}`;
@@ -60,7 +60,7 @@ function playMelodic(e) {
 
   question.instruments[0].play(question.tones[0].name);
 
-  console.log(question.instruments[0].duration(question.tones[0].name));
+  //console.log(question.instruments[0].duration(question.tones[0].name));
 
   setTimeout(() => {
     question.instruments[secondInst].play(question.tones[1].name);
@@ -83,8 +83,8 @@ function makeQuestion(e) {
 
   // clean up + show flash message
   showFlash();
-  answ.innerText = '';
-  answTones.innerText = '';
+  answ.innerText = "";
+  answTones.innerText = "";
   question = {
     tones: [],
     instruments: [],
@@ -103,7 +103,7 @@ function makeQuestion(e) {
   const sorted = randomized.slice(0, 2).sort((a, b) => (a.id > b.id ? 1 : -1));
 
   question.tones = sorted;
-  console.log(question);
+  //console.log(question);
 
   // populate secondInst variable >> used in play functions to hook up second instrument if chosen
   secondInst = question.instruments.length - 1;
@@ -114,9 +114,9 @@ function makeQuestion(e) {
 
 // flash message when new question is created
 function showFlash() {
-  flashMsg.style.display = 'block';
+  flashMsg.style.display = "block";
   setTimeout(() => {
-    flashMsg.style.display = 'none';
+    flashMsg.style.display = "none";
   }, 1000);
 }
 
