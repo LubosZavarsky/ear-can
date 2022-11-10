@@ -2,8 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>👂🏋️♫🎹</title>
     <link
       rel="stylesheet"
@@ -17,8 +15,9 @@
       referrerpolicy="no-referrer"
       defer
     ></script>
-    <script src="./js/chords/chords.js" defer type="module"></script>
+    <script src="./js/intervals/intervals.js" defer type="module"></script>
   </head>
+
   <body>
     <a class="logo" href="./index.html">
       <img src="./assets/ear.png" alt="" />
@@ -27,28 +26,26 @@
 
     <div class="app">
       <div class="boxes">
-        <label for="dominant7">
-          <input
-            type="checkbox"
-            id="dominant7"
-            name="dominant7"
-            value="Dominant 7"
-          />
-          Dominant 7
+        <label for="piano">
+          <input type="checkbox" id="piano" name="piano" /> Piano
         </label>
-        <label for="major7">
-          <input type="checkbox" id="major7" name="major7" value="Major 7" />
-          Major 7
-        </label>
-        <label for="minor7">
-          <input type="checkbox" id="minor7" name="minor7" value="Minor 7" />
-          Minor 7
+        <label for="bassoon">
+          <input type="checkbox" id="bassoon" name="bassoon" />
+          Bassoon
         </label>
       </div>
 
-      <button id="chordBtn">make chord</button>
-      <p id="showChord"></p>
+      <button id="quesBtn">make question</button>
+
+      <div class="btnz">
+        <button id="harmBtn">harmonic</button>
+        <button id="seqBtn">melodic</button>
+      </div>
+
+      <button id="answBtn">show answer</button>
+      <p id="answ"></p>
       <span id="answ-tones"></span>
     </div>
+    <div class="flash">New question created</div>
   </body>
 </html>

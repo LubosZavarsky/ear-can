@@ -1,17 +1,17 @@
-import { data, piano, bassoon } from "../data.js";
-import getInterval from "./getInterval.js";
+import { tonesData, piano, bassoon } from '../data.js';
+import getInterval from './getInterval.js';
 
-const answTones = document.querySelector("#answ-tones");
-const answ = document.querySelector("#answ");
-const btns = document.querySelectorAll("button");
-const quesBtn = document.querySelector("#quesBtn");
-const harmBtn = document.querySelector("#harmBtn");
-const seqBtn = document.querySelector("#seqBtn");
-const answBtn = document.querySelector("#answBtn");
-const flashMsg = document.querySelector(".flash");
+const answTones = document.querySelector('#answ-tones');
+const answ = document.querySelector('#answ');
+const btns = document.querySelectorAll('button');
+const quesBtn = document.querySelector('#quesBtn');
+const harmBtn = document.querySelector('#harmBtn');
+const seqBtn = document.querySelector('#seqBtn');
+const answBtn = document.querySelector('#answBtn');
+const flashMsg = document.querySelector('.flash');
 const checkBoxes = document.querySelectorAll('input[type="checkbox"]');
-const pianoBox = document.querySelector("#piano");
-const bassoonBox = document.querySelector("#bassoon");
+const pianoBox = document.querySelector('#piano');
+const bassoonBox = document.querySelector('#bassoon');
 
 let question = {
   tones: [{}],
@@ -20,18 +20,21 @@ let question = {
 
 let secondInst;
 
+// slice tones array in half to stay within one octave
+const oneOctaveTones = tonesData.slice(0, Math.ceil(tonesData.length / 2));
+
 // ALL BTNS DISABLED BY DEFAULT
 btns.forEach((b) => (b.disabled = true));
 
 // DISABLE BTN IF NO CHECKBOX CHECKED
 checkBoxes.forEach((c) =>
-  c.addEventListener("change", () => {
+  c.addEventListener('change', () => {
     if (
       document.querySelectorAll('input[type="checkbox"]:checked').length === 0
     ) {
       btns.forEach((b) => (b.disabled = true));
-      answ.innerText = "";
-      answTones.innerText = "";
+      answ.innerText = '';
+      answTones.innerText = '';
     } else {
       quesBtn.disabled = false;
     }
@@ -39,16 +42,16 @@ checkBoxes.forEach((c) =>
 );
 
 // EVENT LISTENERS
-quesBtn.addEventListener("click", makeQuestion);
-quesBtn.addEventListener("touchstart", makeQuestion);
+quesBtn.addEventListener('click', makeQuestion);
+quesBtn.addEventListener('touchstart', makeQuestion);
 
-harmBtn.addEventListener("click", playHarmonic);
-harmBtn.addEventListener("touchstart", playHarmonic);
+harmBtn.addEventListener('click', playHarmonic);
+harmBtn.addEventListener('touchstart', playHarmonic);
 
-seqBtn.addEventListener("click", playMelodic);
-seqBtn.addEventListener("touchstart", playMelodic);
+seqBtn.addEventListener('click', playMelodic);
+seqBtn.addEventListener('touchstart', playMelodic);
 
-answBtn.addEventListener("click", () => {
+answBtn.addEventListener('click', () => {
   const answer = getInterval(question.tones[0].id, question.tones[1].id);
   answ.innerText = answer;
   answTones.innerText = `${question.tones[0].name}, ${question.tones[1].name}`;
@@ -71,8 +74,6 @@ function playMelodic(e) {
 function playHarmonic(e) {
   e.preventDefault(); // prevent firing click+touch on mobile
 
-  console.log(question.instruments);
-
   question.instruments[0].play(question.tones[0].name);
   question.instruments[secondInst].play(question.tones[1].name);
 }
@@ -83,8 +84,8 @@ function makeQuestion(e) {
 
   // clean up + show flash message
   showFlash();
-  answ.innerText = "";
-  answTones.innerText = "";
+  answ.innerText = '';
+  answTones.innerText = '';
   question = {
     tones: [],
     instruments: [],
@@ -97,7 +98,9 @@ function makeQuestion(e) {
 
   // TONES
   // shuffle array of notes
-  const randomized = [...data].sort(() => Math.random() - Math.random());
+  const randomized = [...oneOctaveTones].sort(
+    () => Math.random() - Math.random()
+  );
 
   // pick first 2 objects, sort in ascending order
   const sorted = randomized.slice(0, 2).sort((a, b) => (a.id > b.id ? 1 : -1));
@@ -114,9 +117,9 @@ function makeQuestion(e) {
 
 // flash message when new question is created
 function showFlash() {
-  flashMsg.style.display = "block";
+  flashMsg.style.display = 'block';
   setTimeout(() => {
-    flashMsg.style.display = "none";
+    flashMsg.style.display = 'none';
   }, 1000);
 }
 
