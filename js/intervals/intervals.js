@@ -1,4 +1,5 @@
 import { tonesData, piano, bassoon } from "../data.js";
+import showScore from "../showScore.js";
 import getInterval from "./getInterval.js";
 
 const answTones = document.querySelector("#answ-tones");
@@ -12,6 +13,7 @@ const flashMsg = document.querySelector(".flash");
 const checkBoxes = document.querySelectorAll('input[type="checkbox"]');
 const pianoBox = document.querySelector("#piano");
 const bassoonBox = document.querySelector("#bassoon");
+const scoreContainer = document.querySelector("#output");
 
 let question = {
   tones: [{}],
@@ -23,7 +25,7 @@ let secondInst;
 // slice tones array in half to stay within one octave
 const oneOctaveTones = tonesData.slice(0, Math.ceil(tonesData.length / 2));
 
-// ALL BTNS DISABLED BY DEFAULT
+// ALL BTNS DISABLED BY DEFAULT >> moved to HTML
 //btns.forEach((b) => (b.disabled = true));
 
 // DISABLE BTN IF NO CHECKBOX CHECKED
@@ -55,6 +57,12 @@ answBtn.addEventListener("click", () => {
   const answer = getInterval(question.tones[0].id, question.tones[1].id);
   answ.innerText = answer;
   answTones.innerText = `${question.tones[0].name}, ${question.tones[1].name}`;
+  if (scoreContainer.innerHTML === "") {
+    // show score
+    const tone1 = question.tones[0].name.toUpperCase();
+    const tone2 = question.tones[1].name.toUpperCase();
+    showScore(tone1, tone2);
+  }
 });
 
 // PLAY TONES SEQUENTIALLY
@@ -86,6 +94,7 @@ function makeQuestion(e) {
   showFlash();
   answ.innerText = "";
   answTones.innerText = "";
+  scoreContainer.innerHTML = "";
   question = {
     tones: [],
     instruments: [],

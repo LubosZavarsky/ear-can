@@ -27,6 +27,11 @@ body {
   color: gray;
 }
 
+#output {
+  margin: 0 auto;
+  width: 100%;
+}
+
 .boxes {
   display: flex;
   gap: 1rem;

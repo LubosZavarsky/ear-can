@@ -1,4 +1,5 @@
 import { tonesData } from "../data.js";
+import showScore from "../showScore.js";
 
 // const dom7 = { name: 'Dominant 7', tones: [3, 6, 9] };
 // const maj7 = { name: 'Major 7', tones: [3, 6, 10] };
@@ -37,10 +38,11 @@ const chordBtn = document.querySelector("#chordBtn");
 const showChord = document.querySelector("#showChord");
 const answTones = document.querySelector("#answ-tones");
 const checkBoxes = document.querySelectorAll('input[type="checkbox"]');
+const scoreContainer = document.querySelector("#output");
 
 let question;
 
-// ALL BTNS DISABLED BY DEFAULT
+// ALL BTNS DISABLED BY DEFAULT >> moved to HTML
 //chordBtn.disabled = true;
 
 // DISABLE BTN IF NO CHECKBOX CHECKED
@@ -60,6 +62,9 @@ checkBoxes.forEach((c) => {
 
 // MAKE RANDOM CHORD ON CLICK 🤔
 chordBtn.addEventListener("click", () => {
+  // reset
+  scoreContainer.innerHTML = "";
+
   const checkedTypes = document.querySelectorAll(
     'input[type="checkbox"]:checked'
   );
@@ -83,4 +88,11 @@ chordBtn.addEventListener("click", () => {
 
   showChord.innerText = question.name;
   answTones.innerText = question.tones;
+
+  // show score
+  const tone1 = question.tones[0].toUpperCase();
+  const tone2 = question.tones[1].toUpperCase();
+  const tone3 = question.tones[2].toUpperCase();
+  const tone4 = question.tones[3].toUpperCase();
+  showScore(tone1, tone2, tone3, tone4);
 });
