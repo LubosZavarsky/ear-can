@@ -2,7 +2,7 @@ export default function showScore(tone1, tone2, tone3 = 0, tone4 = 0) {
   const { Factory } = Vex.Flow;
 
   const vf = new Factory({
-    renderer: { elementId: "output", width: 150, height: 150 },
+    renderer: { elementId: "output", width: 220, height: 160 },
   });
 
   const score = vf.EasyScore();

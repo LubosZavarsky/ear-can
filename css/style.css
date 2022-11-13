@@ -20,6 +20,7 @@ body {
   max-width: 600px;
   width: 100%;
   font-size: 1.75rem;
+  touch-action: manipulation;
 }
 
 #answ-tones {
@@ -78,7 +79,7 @@ label {
 
 .flash {
   display: none;
-  position: absolute;
+  position: fixed;
   bottom: 1.5rem;
   right: 1.5rem;
   background-color: rgb(146, 246, 191);

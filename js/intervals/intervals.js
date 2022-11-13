@@ -37,6 +37,7 @@ checkBoxes.forEach((c) =>
       btns.forEach((b) => (b.disabled = true));
       answ.innerText = "";
       answTones.innerText = "";
+      scoreContainer.innerHTML = "";
     } else {
       quesBtn.disabled = false;
     }
