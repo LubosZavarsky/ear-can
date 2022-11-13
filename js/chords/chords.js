@@ -1,13 +1,13 @@
-import { tonesData } from '../data.js';
+import { tonesData } from "../data.js";
 
 // const dom7 = { name: 'Dominant 7', tones: [3, 6, 9] };
 // const maj7 = { name: 'Major 7', tones: [3, 6, 10] };
 // const mi7 = { name: 'Minor 7', tones: [2, 6, 9] };
 
 const chords = [
-  { name: 'Dominant 7', tones: [3, 6, 9] },
-  { name: 'Major 7', tones: [3, 6, 10] },
-  { name: 'Minor 7', tones: [2, 6, 9] },
+  { name: "Dominant 7", tones: [3, 6, 9] },
+  { name: "Major 7", tones: [3, 6, 10] },
+  { name: "Minor 7", tones: [2, 6, 9] },
 ];
 
 function makeSept(args) {
@@ -33,25 +33,25 @@ function makeSept(args) {
 
 /*------------------------------------TEST------------------------------------------------------------*/
 
-const chordBtn = document.querySelector('#chordBtn');
-const showChord = document.querySelector('#showChord');
-const answTones = document.querySelector('#answ-tones');
+const chordBtn = document.querySelector("#chordBtn");
+const showChord = document.querySelector("#showChord");
+const answTones = document.querySelector("#answ-tones");
 const checkBoxes = document.querySelectorAll('input[type="checkbox"]');
 
 let question;
 
 // ALL BTNS DISABLED BY DEFAULT
-chordBtn.disabled = true;
+//chordBtn.disabled = true;
 
 // DISABLE BTN IF NO CHECKBOX CHECKED
 checkBoxes.forEach((c) => {
-  c.addEventListener('change', () => {
+  c.addEventListener("change", () => {
     if (
       document.querySelectorAll('input[type="checkbox"]:checked').length === 0
     ) {
       chordBtn.disabled = true;
-      showChord.innerText = '';
-      answTones.innerText = '';
+      showChord.innerText = "";
+      answTones.innerText = "";
     } else {
       chordBtn.disabled = false;
     }
@@ -59,7 +59,7 @@ checkBoxes.forEach((c) => {
 });
 
 // MAKE RANDOM CHORD ON CLICK 🤔
-chordBtn.addEventListener('click', () => {
+chordBtn.addEventListener("click", () => {
   const checkedTypes = document.querySelectorAll(
     'input[type="checkbox"]:checked'
   );
